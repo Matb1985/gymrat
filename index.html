@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Personal Trainer Website">
+    <title>Personal Trainer - Transform Your Life</title>
+
+    <!-- Google Fonts for Modern Look -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Navigation Styles */
+        header {
+            background-color: #333;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+
+        }
+        /* Logo Styles */
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+.logo-img {
+    width: 40px; /* Adjust size of the image as needed */
+    height: 40px;
+    margin-right: 10px; /* Adds space between the image and text */
+    border-radius: 50%; /* Optional: Makes the image circular if desired */
+}
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            color: #fff;
+        }
+
+        nav .nav-list {
+            display: flex;
+            list-style: none;
+        }
+
+        nav .nav-list li {
+            margin-left: 1.5rem;
+        }
+
+        nav .nav-list li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        nav .nav-list li a:hover {
+            color: #00eaff;
+        }
+
+        nav .navbar-toggle {
+            display: none;
+            font-size: 2rem;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            nav .nav-list {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                background-color: #333;
+                width: 100%;
+                text-align: center;
+            }
+
+            nav .nav-list.active {
+                display: flex;
+            }
+
+            nav .navbar-toggle {
+                display: block;
+            }
+        }
+/* Hero Section */
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                url('hero-image.jpg') no-repeat center center; /* Keeps the image centered */
+    background-size: cover; /* Default for smaller screens */
+    color: #fff;
+    text-align: center;
+    padding: 5rem 1rem;
+    position: relative;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (min-width: 1200px) {
+    .hero {
+        background-size: 100%; /* Ensure full image fits on large screens */
+        background-position: center top; /* Aligns the image's top on large screens */
+    }
+}
+
+.hero h1 {
+    font-size: 4rem;
+    color: #00eaff;
+    text-transform: uppercase;
+    animation: glowing 1.5s infinite alternate;
+    letter-spacing: 2px;
+    line-height: 1.2;
+}
+
+@media (max-width: 768px) {
+    .hero {
+        background-size: 99.9%; /* Makes sure the image covers the entire background */
+        background-position: top center; /* Adjusts focus to top of the image for mobile */
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+        line-height: 1.1;
+        word-break: break-word;
+    }
+}
+
+@keyframes glowing {
+    from {
+        text-shadow: 0 0 10px #00eaff, 0 0 20px #00eaff, 0 0 30px #00eaff, 0 0 40px #00eaff;
+    }
+    to {
+        text-shadow: 0 0 20px #00eaff, 0 0 30px #00eaff, 0 0 40px #00eaff, 0 0 50px #00eaff;
+    }
+}
+
+.cta-button {
+    padding: 0.8rem 1.5rem;
+    background-color: #00eaff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #007b9a;
+}
+        .cta-button {
+            padding: 0.8rem 1.5rem;
+            background-color: #00eaff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #007b9a;
+        }
+
+        /* Video Section */
+        .video-section {
+            text-align: center;
+            padding: 3rem 1rem;
+            background-color: #f4f4f4;
+        }
+
+        .video-section h2 {
+            color: #00eaff;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .video-section iframe {
+            width: 100%;
+            max-width: 800px;
+            height: 450px;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+    /* Services Section */
+.services {
+    padding: 4rem 1rem;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+}
+
+.services h2 {
+    color: #00eaff;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+.service-list {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.service-item {
+    background-color: #444;
+    padding: 2rem;
+    border-radius: 10px;
+    flex: 1 1 300px;
+    max-width: 300px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0; /* Initially invisible */
+    transform: translateY(30px); /* Starts slightly translated down */
+}
+
+.service-item.show {
+    opacity: 1; /* Fully visible */
+    transform: translateY(0); /* Moves to its original position */
+}
+
+.service-item h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #00eaff;
+}
+
+.service-item p {
+    color: #ddd;
+}
+        /* Testimonials Section */
+        .testimonials {
+            padding: 4rem 1rem;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+
+        .testimonials h2 {
+            color: #00eaff;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .testimonial-list {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .testimonial-item {
+            background-color: #ddd;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .testimonial-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 4rem 1rem;
+            background-color: #333;
+            color: #fff;
+        }
+
+        .contact h2 {
+            color: #00eaff;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact label {
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .contact input, .contact textarea {
+            margin-bottom: 1rem;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .contact button {
+            padding: 1rem;
+            background-color: #00eaff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Map Section */
+        .map {
+            padding: 4rem 1rem;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+
+        .map iframe {
+            width: 100%;
+            max-width: 800px;
+            height: 450px;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+
+            /* Footer */
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1.5rem 0;
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .service-list {
+                flex-direction: column;
+            }
+
+            .service-item {
+                width: 100%;
+            }
+
+            .testimonial-list {
+                flex-direction: column;
+            }
+
+            .testimonial-item {
+                min-width: 100%;
+            }
+
+            .video-section iframe {
+                height: 300px;
+            }
+
+            .map iframe {
+                height: 300px;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="path-to-your-image.jpg" alt="Fit4Life Logo" class="logo-img"> <!-- Add your image here -->
+                Fit4Life
+            </div>
+            <div class="navbar-toggle" id="navbar-toggle">☰</div>
+            <ul class="nav-list" id="navbar-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#map">Location</a></li>
+            </ul>
+        </nav>
+    
+    </header>
+
+  <!-- Hero Section -->
+<section id="home" class="hero">
+    <h1>Transform Your Life <br> <br>Fit4Life</h1>
+    <p>Personalized training programs tailored for your body, mind, and life.</p>
+    <a href="#contact" class="cta-button">Get Started</a>
+</section>
+
+    <!-- Video Section -->
+    <section id="video" class="video-section">
+        <h2>Watch Our Intro Video</h2>
+        <iframe src="https://www.youtube.com/embed/DGZMLsl0Y10?si=nKgl-0k6xlRfAVYh" allowfullscreen></iframe>
+    </section>
+
+  <!-- Services Section -->
+<section id="services" class="services">
+    <h2>Our Services</h2>
+    <div class="service-list">
+        <div class="service-item">
+            <h3>One-on-One Personal Training</h3>
+            <p>Customized workouts tailored to your specific needs and goals.</p>
+        </div>
+        <div class="service-item">
+            <h3>Group Fitness Classes</h3>
+            <p>Join our high-energy group classes designed to challenge you.</p>
+        </div>
+        <div class="service-item">
+            <h3>Online Coaching</h3>
+            <p>Get guidance from anywhere with virtual coaching sessions.</p>
+        </div>
+    </div>
+</section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <h2>Client Testimonials</h2>
+        <div class="testimonial-list">
+            <div class="testimonial-item">
+                <p>"The best personal trainer I've worked with. My life has changed!" - Sarah</p>
+            </div>
+            <div class="testimonial-item">
+                <p>"I never thought I could achieve my fitness goals, but now I'm healthier than ever!" - Mike</p>
+            </div>
+            <div class="testimonial-item">
+                <p>"Training sessions are fun, effective, and exactly what I needed!" - Chris</p>
+            </div>
+            <div class="testimonial-item">
+                <p>"I feel stronger, healthier, and more confident after every session." - Emma</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2>Contact Us</h2>
+        <form id="contact-form">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+
+            <button type="submit" class="cta-button">Send Message</button>
+            <p id="form-response" style="display:none;">Thank you! We will get back to you shortly.</p>
+        </form>
+    </section>
+
+    <!-- Map Section -->
+    <section id="map" class="map">
+        <h2>Our Location</h2>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509312!2d144.95565131537796!3d-37.81732717975167!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf5775cbb3c20269d!2sFederation%20Square!5e0!3m2!1sen!2sau!4v1644938412555!5m2!1sen!2sau" allowfullscreen></iframe>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2024 FitLife Personal Training. All rights reserved.</p>
+    </footer>
+
+    <script>
+
+        // Function to detect when service items are in the viewport
+    const serviceItems = document.querySelectorAll('.service-item');
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('show'); // Adds the 'show' class when in view
+        }
+    });
+}, { threshold: 0.5 }); // Trigger when 50% of the item is visible
+
+// Observe each service item
+serviceItems.forEach(item => {
+    observer.observe(item);
+   });
+
+        // JavaScript for toggling the navbar on mobile
+        const toggleButton = document.getElementById('navbar-toggle');
+        const navLinks = document.getElementById('navbar-links');
+
+        toggleButton.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Function to detect when elements are in the viewport
+        function isInViewport(element) {
+            const rect = element.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+
+        // Function to add 'visible' class to testimonials when they enter the viewport
+        function revealTestimonials() {
+            const testimonials = document.querySelectorAll('.testimonial-item');
+            testimonials.forEach(testimonial => {
+                if (isInViewport(testimonial)) {
+                    testimonial.classList.add('visible');
+                }
+            });
+        }
+
+        // Event listener to reveal testimonials on scroll
+        window.addEventListener('scroll', revealTestimonials);
+        window.addEventListener('load', revealTestimonials); // Ensure they reveal on load if already in view
+
+        // Contact Form Handler
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            document.getElementById('form-response').style.display = 'block';
+            this.reset();
+        });
+    </script>
+</body>
+</html>
